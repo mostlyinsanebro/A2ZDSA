@@ -1,0 +1,29 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		char ch=sc.next().charAt(0);
+		switch(ch)
+		{
+		    case 'l':
+		    
+		        System.out.print("Go left");
+		        break;
+		    case 'r':
+		    
+		        System.out.print("Go right");
+		        break;
+		    case 'u':
+		    
+		        System.out.print("Go up");
+		        break;
+		    case 'd':
+		    
+		         System.out.print("Go down");
+		         break;
+		    default:
+		     System.out.print("Do not go anywhere");
+		}
+	}
+}
