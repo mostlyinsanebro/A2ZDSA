@@ -1,0 +1,32 @@
+// CODE TO GET THE LARGEST OF 3 VARIABLES.
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		int a=100,b=20,c=5,l=0;
+		if(a<b)
+		{
+		    if(b<c)
+		    {
+		        l=c;
+		    }
+		    else
+		    {
+		        l=b;
+		    }
+		}
+		else
+		{
+		    if(a<c)
+		    {
+		        l=c;
+		    }
+		    else
+		    {
+		        l=a;
+		    }
+		}
+		
+		System.out.println(l);
+	}
+}
