@@ -1,0 +1,24 @@
+Problem Link:-
+https://practice.geeksforgeeks.org/problems/triangle-pattern-1662285196/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=pattern_15
+
+
+Solution:-
+class Solution {
+
+    void printTriangle(int n) {
+        // code here
+        char c;
+        
+        for(int i=0;i<n;i++)
+        {
+            c=65;
+            
+            for(int j=0;j<n-i;j++)
+            {
+                System.out.print(c);
+                c++;
+            }
+            System.out.println();
+        }
+    }
+}
