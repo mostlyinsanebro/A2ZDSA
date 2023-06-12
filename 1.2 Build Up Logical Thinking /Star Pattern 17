@@ -1,0 +1,38 @@
+Problem Link:-
+https://practice.geeksforgeeks.org/problems/triangle-pattern-1662285911/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=pattern_17
+
+
+
+
+Solution:-
+class Solution {
+
+    void printTriangle(int n) {
+        // code here
+        char c = 65;
+        for(int i=0;i<n;i++)
+        {
+            c=65;
+            for(int spaces = 0;spaces < n-i-1;spaces++)
+            {
+                System.out.print(" ");
+            }
+            
+            for(int character = 0; character <=i;character ++)
+            {
+                System.out.print(c);
+                c++;
+            }
+            c--;
+            for(int character = 0;character < i;character++)
+            {
+                c--;
+                System.out.print(c);
+            }
+            
+            
+            System.out.println();
+            
+        }
+    }
+}
