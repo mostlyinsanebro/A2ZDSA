@@ -1,0 +1,33 @@
+Problem Link:-
+https://practice.geeksforgeeks.org/problems/square-pattern-1662666141/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=pattern_22
+
+
+Approach:-
+First find the min of distances from top, bottom,right and left for each index and then substract it from n. It will produce the result. 
+We will have to keep this approach in mind.
+
+
+Solution:-
+class Solution {
+
+    void printSquare(int n) {
+        // code here
+        for(int i=0;i< 2*n -1 ;i++)
+        {
+            for(int j=0;j< 2*n-1;j++)
+            {
+                int dist_from_top =    i;
+                int dist_from_left =   j;
+                int dist_from_right =  (2*n - 2) - j;
+                int dist_from_bottom  =  (2*n - 2) - i;
+                
+                int val = Math.min(Math.min(dist_from_top,dist_from_left),Math.min(dist_from_right,dist_from_bottom));
+                
+                int res = n - val;
+                
+                System.out.print(res+" ");
+            }
+            System.out.println();
+        }
+    }
+}
