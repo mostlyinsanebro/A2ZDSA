@@ -1,0 +1,23 @@
+Problem:-
+Count digits in a number
+
+
+Solution:-
+class Solution{
+    static void evenlyDivides(int N){
+        // code here
+        int c = 0;
+        int d = 0;
+        int temp = N;
+        while(temp != 0)
+        {
+            d = temp%10;
+            System.out.println(d);
+            temp = temp/10;
+            c++;
+            
+        }
+      System.out.println("Number of digits in n = "+c);
+      
+    }
+}
