@@ -1,0 +1,17 @@
+Problem Link:-
+https://practice.geeksforgeeks.org/problems/print-gfg-n-times/1
+
+
+Solution:-
+class Solution {
+
+    void printGfg(int N) {
+        // code here
+        if(N==0)
+        return ;
+        
+        System.out.print("GFG ");
+        
+        printGfg(N-1);
+    }
+}
