@@ -1,19 +1,18 @@
 Problem Link:-
-https://practice.geeksforgeeks.org/problems/print-n-to-1-without-loop/1?utm_source=geeksforgeeks&utm_medium=ml_article_practice_tab&utm_campaign=article_practice_tab
+https://practice.geeksforgeeks.org/problems/print-gfg-n-times/1
 
 
 
 Solution:-
 class Solution {
 
-    void printNos(int N) {
+    void printGfg(int N) {
         // code here
-        
         if(N==0)
-        return;
+        return ;
         
-        System.out.print(N+" ");
+        System.out.print("GFG ");
         
-        printNos(N-1);
+        printGfg(N-1);
     }
 }
