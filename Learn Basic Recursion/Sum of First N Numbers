@@ -1,0 +1,19 @@
+Problem Link:-
+https://www.codingninjas.com/studio/problems/n-to-1-without-loop_8357243?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf
+
+
+
+
+Solution:-
+    public static int[] Nto1(int x,int arr[])
+    {
+        if(x==0)
+        return arr;
+
+
+        arr[arr.length-x] = x;
+
+        Nto1(x-1, arr);
+
+        return arr;
+    }
