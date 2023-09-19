@@ -1,0 +1,35 @@
+Problem Link:-
+https://www.codingninjas.com/studio/problems/check-palindrome-recursive_624386?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf&leftPanelTab=1
+
+
+
+Approach:-
+Go till the half of the string same like array and keep checking if the character at ith index is equal to the n-i-1 th index. If yes keep hoing forward till the
+half of the string and then true, else return false using recursion.
+
+
+Solution:-
+public class Solution {
+    public static boolean isPalindrome(String str) {
+        // Write your code here.
+         return isPal(0,str);
+    }
+
+        public static boolean isPal(int i,String s)
+    {
+        if(i>=s.length()/2)
+        {
+            return true;
+        }
+        
+        
+        if(s.charAt(i) == s.charAt(s.length()-i-1)&& isPal(i+1,s))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+}
