@@ -2,6 +2,10 @@ Problem Link:-
 https://practice.geeksforgeeks.org/problems/find-all-factorial-numbers-less-than-or-equal-to-n3548/1?utm_source=geeksforgeeks&utm_medium=ml_article_practice_tab&utm_campaign=article_practice_tab
 
 
+Approach:-
+Start from 1 in the recursion call stack and then keep on adding all the factorials that are smaller than n to the ArrayList call by call using recursion.
+
+
 Solution:-
 class Solution{
     static ArrayList<Long> factorialNumbers(long N){
