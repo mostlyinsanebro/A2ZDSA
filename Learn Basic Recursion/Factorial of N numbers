@@ -1,0 +1,24 @@
+Problem Link:-
+https://practice.geeksforgeeks.org/problems/find-all-factorial-numbers-less-than-or-equal-to-n3548/1?utm_source=geeksforgeeks&utm_medium=ml_article_practice_tab&utm_campaign=article_practice_tab
+
+
+Solution:-
+class Solution{
+    static ArrayList<Long> factorialNumbers(long N){
+        // code here
+        
+       ArrayList <Long> al = new ArrayList<>();
+        return fN(N,1,1,al);
+    }
+    
+     public static ArrayList<Long> 
+fN(long n,long i,long factorial,ArrayList<Long> res)
+{
+    if(factorial <= n)
+    {
+        res.add(factorial);
+        return fN(n,i+1,factorial*(i+1),res);
+    }
+    return res;
+}
+}
