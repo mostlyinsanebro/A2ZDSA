@@ -2,9 +2,9 @@ Problem Link:-
 https://www.codingninjas.com/studio/problems/reverse-an-array_8365444?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf&leftPanelTab=1
 
 
-Approach:-
-Take two pointers, l and r where l starts from the beginning and r starts from the end of array and we then keep on swapping the elements at l and r
-till the l>=r. We will do this through recusrion obviously.
+Approach 1:-
+Take two pointers, l and r where l starts from the beginning and r starts from the end of the array and we then keep on swapping the elements at l and r
+till the l>=r. We will do this through recursion obviously.
 
 
 Solution:-
@@ -29,5 +29,35 @@ public class Solution {
         nums[r]=temp;
 
         return rev(l+1,r-1,nums);
+    }
+}
+
+
+
+Approach 2:- We can also do this using a single pointer, which will go to the half of the array and it will keep on swapping the ith index with the n-i-1 th 
+index until I reach the arr.length/2 position through recursion.
+
+Solution:-
+public class Solution {
+    public static int[] reverseArray(int n, int []nums) {
+        // Write your code here.
+
+        return rev(0,nums);
+
+    }
+
+
+    public static int[] rev(int i,int nums[])
+    {
+        if(i>=nums.length/2)
+        {
+            return nums;
+        }
+
+        int temp = nums[i];
+        nums[i]=nums[nums.length-i-1];
+        nums[nums.length-i-1]=temp;
+
+        return rev(i+1,nums);
     }
 }
