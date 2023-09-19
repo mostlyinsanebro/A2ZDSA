@@ -1,0 +1,24 @@
+Problem Link:-
+https://leetcode.com/problems/fibonacci-number/description/
+
+
+TC:- 2^n
+
+Approach:- We will make two recursive calls, one for n-1 and one for n-2 and then add up their sum and we will get fib(n).
+
+
+Solution:-
+class Solution {
+    public int fib(int n) {
+        return f(n);
+    }
+
+    public int f(int n)
+    {
+        if(n<=1)
+        return n;
+
+
+        return fib(n-1)+fib(n-2);
+    }
+}
