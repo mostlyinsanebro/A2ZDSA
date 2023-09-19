@@ -35,7 +35,7 @@ public class Solution {
 
 
 Approach 2:- We can also do this using a single pointer, which will go to the half of the array and it will keep on swapping the ith index with the n-i-1 th 
-index until I reach the arr.length/2 position through recursion.
+index until i reachs the arr.length/2 position through recursion.
 
 Solution:-
 public class Solution {
