@@ -1,0 +1,183 @@
+Hashing can be defined something like pre-storing and fetching.
+
+// NUMBER HASING
+// Code to create a hash array for n elements and then using it for pre-fetching and then getting the occurence of each element.
+
+// Approach:- We used the approach that we will use an array for maintaining the count of each element in the array in our count array
+// with count array's size as the maximum element in the array.
+
+import java.util.*;
+
+class Solution {
+    public static void main(String[] args) {
+        // Write your code here
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++)
+        {
+            arr[i]=sc.nextInt();
+            
+        }
+        int hash[] = new int[13];
+        
+        // prefetching the count of elements.
+        for(int i=0;i<arr.length;i++)
+        {
+           hash[arr[i]] = hash[arr[i]]+1;
+        }
+
+         int t = sc.nextInt();
+        for(int i=0;i<t;i++)
+        {
+            int var =  sc.nextInt();
+
+            // Getting the count of each element.
+            System.out.println(hash[var]);
+        }
+
+
+    }
+}
+
+
+// The problem with the above approach is that we will not be able to create array with size more than 10^6 in main and 10^7 globally.
+// Here , hashing comes into use.
+
+
+// CHARACTER HASHING
+// Given a string, get the count of each element in that string.
+
+
+// We can use arrays for hasing in case of character arrays because there can be only 256 characters at max.
+// We will not face the same problem as number  hashing.
+
+import java.util.*;
+
+class Solution {
+    public static void main(String[] args) {
+        // Write your code here
+        Scanner sc=new Scanner(System.in);
+        String s=sc.next();
+        
+        // Pre-fetching of characters.
+        int hash[]= new int[26];
+        for(int i=0;i<s.length();i++)
+        {
+            char c=s.charAt(i);
+
+            // Increase the count of 
+            // characters in hash array
+            hash[c-'a']++;
+        }
+
+        int t= sc.nextInt();
+
+        for(int i=0;i<t;i++)
+        {
+            String ch=sc.next();
+            char c = ch.charAt(0);
+
+            // Get the count of each character from hash array. 
+            System.out.println(hash[c-'a']);
+        }
+
+
+    }
+}
+
+
+// CHARACTER HASHING TYHROUGH HASHMAP
+
+import java.util.*;
+
+class Solution {
+    public static void main(String[] args) {
+        // Write your code here
+        Scanner sc=new Scanner(System.in);
+        String s=sc.next();
+        
+        // Pre-fetching of characters.
+        HashMap<Character,Integer> map = new HashMap<>();
+
+        // Sorted map is sorted in order.
+        // SortedMap<Character,Integer> map = new TreeMap<>();
+        for(int i=0;i<s.length();i++)
+        {
+            char c=s.charAt(i);
+
+            // Increase the count of 
+            // characters in hash array
+            //hash[c-'a']++;
+            map.put(c,map.getOrDefault(c,0)+1);
+        }
+
+        // Traverse through the map
+        // map.forEach((key,value)-> 
+        // System.out.println(key +" "+value));
+
+        int t= sc.nextInt();
+
+        for(int i=0;i<t;i++)
+        {
+            String ch=sc.next();
+            char c = ch.charAt(0);
+            System.out.println(map.get(c));
+        }
+
+
+    }
+}
+
+
+
+// We are now going to use HashMap for hashing our integer array. It will store the key, value pair in it
+// and it will only store those elements that occur atleast once.
+
+
+import java.util.*;
+
+class Solution {
+    public static void main(String[] args) {
+        // Write your code here
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+
+        int arr[]=new int[n];
+        HashMap<Integer,Integer> map= new HashMap<>();
+        for(int i=0;i<n;i++)
+        {
+            arr[i]=sc.nextInt();
+
+            // Populating the hashMap
+            map.put(arr[i],map.getOrDefault(arr[i],0)+1);
+            
+        }
+        
+
+        int t = sc.nextInt();
+        for(int i=0;i<t;i++)
+        {
+            int var =  sc.nextInt();
+
+            // Getting the count of each element.
+            if(map.containsKey(var))
+            System.out.println(map.get(var));
+            else
+            System.out.println(0);
+        }
+
+
+    }
+}
+
+// NOTE:- In the unsorted/simple hashmap, the storing and fetching happens in O(1) in best and average case and O(n) in worst case.
+// but in sorted hashmap, it happens in O(logn) in all cases
+// so , better to use unsorted hashmap , if it gives TLE then use sorted hashMap.
+
+
+// O(n) can happen if collision happens i.e. every element gets chained to the same hash index and then same chain as the array
+// gets created there.
+
+// In ordered map, key can be any data structure but in unordered/simple map, it can only be a single value.
