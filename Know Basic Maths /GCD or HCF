@@ -1,0 +1,62 @@
+Problem Link:-
+https://www.codingninjas.com/studio/problems/hcf-and-lcm_840448?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf&leftPanelTab=1
+
+
+
+Approach 1:-
+Go till the smaller element and get the largest common element that divides both elements evenly. It will be the GCD.
+
+public class Solution {
+    public static int calcGCD(int n, int m){
+        // Write your code here.
+        int min = 0,gcd=0;
+        if(n<m)
+        {
+            min = n;
+        }
+        else{
+            min= m;
+        }
+
+        for(int i=1;i<=min;i++)
+        {
+            if(n%i==0&&m%i==0)
+            {
+                gcd = i;
+            }
+        }
+
+        return gcd;
+    }
+}
+
+T.C. -> O(min(m,n))
+
+
+
+Approach 2 (Optimal Approach):-
+
+Use Eucledian Method
+
+public class Solution {
+    public static int calcGCD(int n, int m){
+        // Write your code here.
+
+       
+        // Eucledian Method
+        // gcd(a,b) = gcd(a-b,a)      where a>b
+        // This boils down to
+        // gcd(a,b) = gcd(a%b,b)      where a>b
+        
+        while(n>0&&m>0)
+        {
+            if(n>m) n=n%m;
+            else    m = m%n;
+        }
+
+        if(n==0) return m;
+        else     return n;
+    }
+}
+
+T.C -> O(log(phi) (min(m,n))
