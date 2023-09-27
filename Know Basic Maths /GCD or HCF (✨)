@@ -4,7 +4,7 @@ https://www.codingninjas.com/studio/problems/hcf-and-lcm_840448?utm_source=striv
 
 
 Approach 1:-
-Go till the smaller element and get the largest common element that divides both elements evenly. It will be the GCD.
+Go to the smaller element and get the largest common element that divides both elements evenly. It will be the GCD.
 
 public class Solution {
     public static int calcGCD(int n, int m){
