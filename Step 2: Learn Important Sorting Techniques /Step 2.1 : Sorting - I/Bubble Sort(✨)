@@ -5,10 +5,13 @@ https://www.codingninjas.com/studio/problems/bubble-sort_624380?utm_source=striv
 Approach:-
 Keep on bubbling the max element to the end of array using adajacent compares and swaps with each iteration.
 
-T.C -> O(n^2)
+T.C -> O(n^2)  -- worst and average
+
+O(n) -- best, if array is already sorted.
 
 
 Solution:-
+
 public class Solution {
     public static void bubbleSort(int[] arr, int n) {
         //Your code goes here
@@ -16,6 +19,7 @@ public class Solution {
         int temp=0;
         for(int i=0;i<n-1;i++)
         {
+            int didSwap =0;
             for(int j=0;j<n-i-1;j++)
             {
                 if(arr[j]>arr[j+1])
@@ -23,7 +27,12 @@ public class Solution {
                     temp=arr[j];
                     arr[j]=arr[j+1];
                     arr[j+1]=temp;
+                    didSwap =1;
                 }
+            }
+            if(didSwap == 0)
+            {
+                break;
             }
         }
     }
