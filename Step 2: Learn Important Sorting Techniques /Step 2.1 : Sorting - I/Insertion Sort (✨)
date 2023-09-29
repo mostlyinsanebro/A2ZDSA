@@ -1,0 +1,50 @@
+Problem Link:-
+https://practice.geeksforgeeks.org/problems/insertion-sort/1?utm_source=geeksforgeeks&utm_medium=article_practice_tab&utm_campaign=article_practice_tab
+
+
+Approach:-
+Takes an element and place it in it's correct position.
+
+T.C -> Average and Worst T.C -> O(n^2)
+       Best T.C -> O(n) [in this case, no swaps will happen]
+
+Solution:-
+class Solution
+{
+ 
+  //Function to sort the array using insertion sort algorithm.
+  public void insertionSort(int arr[], int n)
+  {
+      //code here
+      int temp =0;
+      
+      // Go from left to right for every element in the array
+      for(int i=0;i<n;i++)
+      {
+          // Now, while the ith element is smaller to the element on its left
+          // keep on swapping it with the left element, till it reaches its correct position
+          // i.e. till it is not greater than the element top it's left or till the start of
+          // array is not reached.
+          
+          for(int j=i;j>=1;j--)
+          {
+              
+              // if element is smaller to the element on it's left, swpa them both
+              if(arr[j] < arr[j-1])
+              {
+                  temp = arr[j];
+                  arr[j]=arr[j-1];
+                  arr[j-1]=temp;
+              }
+              
+              
+              // if the element is greater to the element on it's left, 
+              // this means it has reached it's correct position, then break the current loop.
+              else
+              {
+                break;
+              }
+          }
+      }
+  }
+}
