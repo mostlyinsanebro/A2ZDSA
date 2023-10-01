@@ -1,0 +1,40 @@
+Problem Link:-
+https://practice.geeksforgeeks.org/problems/second-largest3735/1?utm_source=geeksforgeeks&utm_medium=article_practice_tab&utm_campaign=article_practice_tab
+
+
+Two cases:-
+if arr[i]> l
+then sl = l and l = arr[i]
+
+else if arr[i] < l and arr[i] > sl
+sl = arr[i]
+
+Solution:-
+
+class Solution {
+    int print2largest(int arr[], int n) {
+        // code here
+        int l = Integer.MIN_VALUE;
+        int sl = Integer.MIN_VALUE;
+        
+        
+        for(int i=0;i<n;i++)
+        {
+            if(arr[i]>l)
+            {
+                sl=l;
+                l=arr[i];
+            }
+            else if(arr[i]<l && arr[i]>sl)
+            {
+                sl=arr[i];
+            }
+        }
+        
+        if(sl == Integer.MIN_VALUE)
+        return -1;
+        
+        
+        return sl;
+    }
+}
