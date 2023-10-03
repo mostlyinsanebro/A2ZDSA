@@ -1,0 +1,51 @@
+Problem Link:-
+https://practice.geeksforgeeks.org/problems/remove-duplicate-elements-from-sorted-array/1?utm_source=geeksforgeeks&utm_medium=article_practice_tab&utm_campaign=article_practice_tab
+
+
+Brute Force Approach -> Use a hashSet, put elements in it and get the size of hashSet will will give the number of unique elements in array.
+
+Solution:-
+public class Solution {
+	public static int removeDuplicates(ArrayList<Integer> arr,int n) {
+		// Write your code here.
+		HashSet<Integer> lhs = new HashSet<>();
+		for(int i=0;i<n;i++)
+		{
+			lhs.add(arr.get(i));
+		}
+
+		return lhs.size();
+	}
+}
+
+T.C -> O(NlogN)    -> logN is the item taken for insertion of an element in hashSet.
+
+
+Optimal approach -> Use 2-pointer, if arr[i]!=arr[j] then put arr[j] at arr[i+1] , else j++.
+
+Solution:-
+class Solution {
+    int remove_duplicate(int arr[],int N){
+        // code here
+        
+        int i=0,j=0;
+        
+        while(j<N)
+        {
+            if(arr[i]!=arr[j])
+            {
+                arr[i+1]=arr[j];
+                i++;
+                j++;
+            }
+            else
+            {
+                j++;
+            }
+        }
+        
+        return i+1;
+    }
+}
+
+T.C -> O(N)
