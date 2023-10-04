@@ -1,0 +1,29 @@
+Problem Link:-
+https://www.codingninjas.com/studio/problems/left-rotate-an-array-by-one_5026278?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf&leftPanelTab=1
+
+
+
+Solution:-
+public class Solution {
+
+    static int[] rotateArray(int[] arr, int n) {
+        // Write your code here.
+        int temp=arr[0];
+
+        for(int i=0;i<n-1;i++)
+        {
+            arr[i] = arr[i+1];
+        }
+
+        arr[n-1]=temp;
+
+        return arr;
+
+    }
+}
+
+
+T.C. -> O(N)
+Space used -> O(N) -> the given array that we are using.
+Extra space used is -> O(1) 
+Therefore, S.C. -> O(1) , it is for the extra space used in algoritm i.e. the extra sapec that we take and use.
