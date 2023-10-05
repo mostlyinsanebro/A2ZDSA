@@ -1,0 +1,89 @@
+Problem Link:-
+https://practice.geeksforgeeks.org/problems/rotate-array-by-n-elements-1587115621/1?utm_source=geeksforgeeks&utm_medium=article_practice_tab&utm_campaign=article_practice_tab
+
+
+
+Brute Force Approach:- Using a temp array
+
+T.C. -> O(n)
+S.C -> O(d) [We take into account the extra space used only in this]
+
+class Solution
+{
+    //Function to rotate an array by d elements in counter-clockwise direction. 
+    static void rotateArr(int arr[], int d, int n)
+    {
+        // add your code here
+        d = d%n;
+        
+        int temp[] = new int[d];
+        
+        // Put first d elements in a temporary array
+        for(int i=0;i<d;i++)
+        {
+            temp[i]=arr[i];
+        }
+        
+        // Now, put the remaining elements in the array from d to n at the start of the array
+        for(int i=d;i<n;i++)
+        {
+            arr[i-d] = arr[i];
+        }
+        
+        
+        // Now, put the elements from temp array to the last remaining positions.
+        for(int i = n-d;i<n;i++)
+        {
+            arr[i] = temp[i-(n-d)];
+        }
+        
+        
+        
+    }
+}
+
+
+
+Optimal Approach:-
+
+T.C. -> O(n)
+S.C -> O(1)
+
+class Solution
+{
+    //Function to rotate an array by d elements in counter-clockwise direction. 
+    static void rotateArr(int arr[], int d, int n)
+    {
+        // add your code here
+        
+        // First make d  smaller than n.
+        d=d%n;
+        
+        // Reverse array from 0 -> d
+        reverse(arr,0,d-1);
+        
+        
+        // Reverse array from d+1 to n (remaining positions).
+        reverse(arr,d,n-1);
+        
+        
+        // reverse the whole array.
+        reverse(arr,0,n-1);
+        
+        // The result will give an array rotated by d positions to the left.
+    }
+    
+    public static void reverse(int arr[],int l,int r)
+    {
+        int temp=0;
+        while(l<r)
+        {
+            temp = arr[l];
+            arr[l]=arr[r];
+            arr[r]=temp;
+            l++;
+            r--;
+            
+        }
+    }
+}
