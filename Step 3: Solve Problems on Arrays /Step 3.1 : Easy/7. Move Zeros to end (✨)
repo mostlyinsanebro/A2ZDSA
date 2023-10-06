@@ -1,0 +1,101 @@
+Problem Link:-
+https://practice.geeksforgeeks.org/problems/move-all-zeroes-to-end-of-array0751/1
+
+Brute Force Approach:-
+By using another array for storing non-zero elements first and then putting those non-zero elements at the 
+start of the original array.
+
+T.C. -> O(n)
+S.C -> O(k) -> k being the number of non-zero elements in array
+
+Code:-
+class Solution {
+    void pushZerosToEnd(int[] arr, int n) {
+
+       // Get the number of non-=zero elements in the array to create the non-zero element array.
+       int c=0;
+        for(int i=0;i<n;i++)
+        {
+            if(arr[i]!=0)
+            {
+                c++;
+            }
+        }
+
+        // Create array for storing non-zero elements
+        int al[] = new int[c];
+        int j=0;
+
+        // Store non-zero elements in the array
+        for(int i=0;i<n;i++)
+        {
+            if(arr[i]!=0)
+            {
+                al[j]=arr[i];
+                j++;
+            }
+        }
+        
+        // Put the non-zero elements from the new array to the staring of original array
+        for(int i=0;i<c;i++)
+        {
+            arr[i]=al[i];
+        }
+
+       // Fill the remaining positions in the original array with zeroes. 
+        for(int i=c;i<n;i++)
+        {
+            arr[i]=0;
+        }
+    }
+}
+
+
+
+Optimal Solution:- Two pointer approach
+
+T.C -> O(N)
+S.C -> O(1)
+
+class Solution {
+    void pushZerosToEnd(int[] arr, int n) {
+        // code here
+        
+        int l=0;
+        int r=0;
+        int temp = 0;
+
+        // While the right pointer is smaleer  then size of array, iterate
+        while(r<n)
+        {
+            // If element on l is 0, then check for the non-zero element on the right index 
+            // If you find the next non-zero element, then swap it with the current zero element
+            // else if the right reaches the end of array w/o any non-zero element, then exit the loop
+            // because that means now all zeroes are in the end.
+            if(arr[l]==0)
+            {
+                while(r<n && arr[r]==0)
+                {
+                    r++;
+                }
+
+                if(r>=n) break;
+
+                temp = arr[l];
+                arr[l]=arr[r];
+                arr[r]=temp;
+                l++;
+                r++;
+            }
+           // If tyhe current element is not zero, then go to next index; 
+            else{
+                if(r<=l)
+                {
+                    r++;
+                }
+                l++;
+            }
+        }
+
+    }
+}
