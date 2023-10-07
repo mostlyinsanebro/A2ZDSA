@@ -5,31 +5,39 @@ https://practice.geeksforgeeks.org/problems/union-of-two-sorted-arrays-158711562
 
 Brute Force Approach:-
 
+T.C -> O(n1+n2) + O(n1logn+n2logn) -> Worst case
+where the T.C. for inserting n elements in a HashSet is nlogn.
+
+S.C-> O(n1+n2) -> In case both a and b array have all different elements.
 
 public class Solution {
     public static List< Integer > sortedArray(int []a, int []b) {
         // Write your code here
 
+        // Take a HashSet for inserting elements.
         HashSet<Integer> hs = new HashSet<>();
 
+        // Insert unique elements from array a.
         for(int i=0;i<a.length;i++)
         {
             hs.add(a[i]);
         }
 
+        // Insert unique elements from array b.
         for(int i=0;i<b.length;i++)
         {
             hs.add(b[i]);
-            //System.out.println(b[i]);
         }
 
         ArrayList<Integer> al = new ArrayList<>();
 
+        // Traverse the HashSet and put its elements in the ArrayList
         for(int i: hs)
         {
             al.add(i);
         }
 
+        // Now, sort the ArrayList. Now, the ArrayList contains union of two sorted arrays with all unique elements in it.
         Collections.sort(al);
         
         return al;
@@ -41,19 +49,28 @@ public class Solution {
 
 
 Optimal Approach:-
+
+T.C. -> O(N)
+S.C -> O(1)
+
 class Solution
 {
-    //Function to return a list containing the union of the two arrays.
+    // Function to return a list containing the union of the two arrays.
     public static ArrayList<Integer> findUnion(int arr1[], int arr2[], int n, int m)
     {
-        // add your code here
+        // Create an arrayList
         ArrayList<Integer> al = new ArrayList<Integer>();
         
         int i=0,j=0;
-    
+
+        // Take two pointers i and j where i will traverse in array1 and j will traverse in array2
+        // till one of the pointers reaches the end of its respective array.
         while(i<n&&j<m)
         {
-            
+
+            // If the element on the pointer i, the first array is smaller then
+            // first check if the ArrayList has at least one element. If not, then put that element 
+            // in arrayList. If that element is != the last element on ArrayList, then put it in the arrayList and increase the pointer.
             if(arr1[i]<=arr2[j])
             {
                 //int g = al.size()-1;
@@ -63,6 +80,8 @@ class Solution
                 }
               i++;
             }
+
+            // else , do same for arr2 and j.
             else
             {
                 //int g = al.size()-1;
@@ -73,7 +92,9 @@ class Solution
                j++;
             }
         }
-        
+
+        // If the end of one of the array is reached, check for elements left in another array and put them in the 
+        // same array in the same way.
         while(i<n)
         {
             if(al.get(al.size()-1)!=arr1[i])
