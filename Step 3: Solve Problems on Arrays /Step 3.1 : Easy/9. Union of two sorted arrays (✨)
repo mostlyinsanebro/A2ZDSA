@@ -58,7 +58,7 @@ class Solution
     // Function to return a list containing the union of the two arrays.
     public static ArrayList<Integer> findUnion(int arr1[], int arr2[], int n, int m)
     {
-        // Create an arrayList
+        // Create an ArrayList
         ArrayList<Integer> al = new ArrayList<Integer>();
         
         int i=0,j=0;
@@ -68,9 +68,10 @@ class Solution
         while(i<n&&j<m)
         {
 
-            // If the element on the pointer i, the first array is smaller then
-            // first check if the ArrayList has at least one element. If not, then put that element 
-            // in arrayList. If that element is != the last element on ArrayList, then put it in the arrayList and increase the pointer.
+            // If the element on the pointer i, the first array is smaller than the element in the second array then
+            // First check if the ArrayList has at least one element. If not, then put that element 
+            // in ArrayList. 
+            // Else if that element is != the last element on ArrayList, then put it in the ArrayList and increase the pointer.
             if(arr1[i]<=arr2[j])
             {
                 //int g = al.size()-1;
@@ -81,7 +82,8 @@ class Solution
               i++;
             }
 
-            // else , do same for arr2 and j.
+            // If the element in the second array on the current pointer is smaller than the element on the pointer in the first array,
+            // Then, do the same for the second array.
             else
             {
                 //int g = al.size()-1;
@@ -94,7 +96,7 @@ class Solution
         }
 
         // If the end of one of the array is reached, check for elements left in another array and put them in the 
-        // same array in the same way.
+        // al in the same way.
         while(i<n)
         {
             if(al.get(al.size()-1)!=arr1[i])
