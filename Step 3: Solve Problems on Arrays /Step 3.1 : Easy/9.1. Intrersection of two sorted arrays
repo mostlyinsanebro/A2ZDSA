@@ -1,0 +1,54 @@
+Problem Link:-
+https://www.codingninjas.com/studio/problems/intersection-of-2-arrays_1082149?leftPanelTab=0
+
+
+
+Brute Force Approach-> Visit every element in array2 for each element in array1 and check if the occurences match or not. Also keep a visited array 
+for array2 which tells whether an element has been visited before or not so that no element is paired twice.
+
+T.C. -> O(n*m)
+S.C. -> O(m) [for visited array] + O(min(n,m)) [in worstcase, if all the elements of the smaller sized arra intersect].
+
+
+import java.util.* ;
+import java.io.*; 
+public class Solution
+{
+	public static ArrayList<Integer> findArrayIntersection(ArrayList<Integer> arr1, int n, ArrayList<Integer> arr2, int m)
+	{
+		// Write Your Code Here.
+
+    // Create ArrayList for storing the intersection.
+		ArrayList<Integer> ans = new ArrayList<>();
+
+   // Create visited array to keep track whether an element has been visited before or not. 
+		int visited[]=new int[arr2.size()];
+
+    // Now, run loop for every element of array2 for every element of array1 checking that whether the 
+    // occurences match or not while checking if the element has been visited before or not.
+    // Since both the arrays are sorted, no need to check in array2 for element value greater than value
+    // of current element.
+    
+		for(int i=0;i<n;i++)
+		{
+			for(int j=0;j<m;j++)
+			{
+				if(arr2.get(j)<=arr1.get(i))
+				{
+					if(arr1.get(i)==arr2.get(j)&&visited[j]==0)
+					{
+						ans.add(arr1.get(i));
+						visited[j]=1;
+						break;
+					}
+				}
+				else
+				{
+					break;
+				}
+			}
+		}
+
+		return ans;
+	}
+}
