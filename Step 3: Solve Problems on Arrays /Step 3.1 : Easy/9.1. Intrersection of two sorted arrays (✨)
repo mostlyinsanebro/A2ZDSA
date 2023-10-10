@@ -52,3 +52,43 @@ public class Solution
 		return ans;
 	}
 }
+
+
+Optimal Solution:- The approach is to use two pointers, for each of the arrays. If a[i] is smaller than b[j], then increase i.
+If a[i] is greater than b[j], then increase j.
+else if both are equal, add an element to the ans ArrayList and increase both. Do this till the end of one of the arrays is reached.
+
+T.C -> O(min(n,m))
+S.C -> O(min(n,m)) [in the worst case, if all the elements of the smaller array intersect].
+
+import java.util.* ;
+import java.io.*; 
+public class Solution
+{
+	public static ArrayList<Integer> findArrayIntersection(ArrayList<Integer> arr1, int n, ArrayList<Integer> arr2, int m)
+	{
+		// Write Your Code Here.
+		int i=0,j=0;
+		ArrayList<Integer> ans = new ArrayList<>();
+
+		while(i<n&&j<m)
+		{
+			if(arr1.get(i)< arr2.get(j))
+			{
+				i++;
+			}
+			else if(arr1.get(i)>arr2.get(j))
+			{
+				j++;
+			}
+			else
+			{
+				ans.add(arr1.get(i));
+				i++;
+				j++;
+			}
+		}
+
+		return ans;
+	}
+}
