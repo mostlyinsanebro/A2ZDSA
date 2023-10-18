@@ -1,0 +1,99 @@
+Problem Link:-
+https://practice.geeksforgeeks.org/problems/missing-number-in-array1416/1
+
+
+Solution:-
+
+Brute Force Approach:-
+Traverse every number from 1 to n and then do a linear search in the array checking if the number exists in array or not. If yes, then break the loop
+and if not and the end of array is reached, then that number is the missing number, return it.
+
+T.C -> O(n^2)
+
+Code:-
+class Solution {
+    int missingNumber(int array[], int n) {
+        // Your Code Here
+        boolean exists = false;
+        
+        for(int i=1;i<=n;i++)
+        {
+            exists = false;
+            for(int j=0;j<array.length;j++)
+            {
+                if(array[j]==i)
+                {
+                    exists = true;
+                }
+            }
+            
+            if(exists==false)
+            {
+                return i;
+            }
+        }
+        
+        return 1;    
+    }
+}
+
+
+
+Better Approach:-
+Use a hash array. Keep on updating the corresponding index of the found element in the hash array. After that, traverse the hash array and check
+which index has 0 on it, that is the missing element.
+
+T.C -> O(n) + O(n)
+S.C -> O(n)
+
+Code:-
+class Solution {
+    int missingNumber(int array[], int n) {
+        // Your Code Here
+        
+        
+        int hash[] = new int[n+1];
+        
+        
+        for(int i=0;i<array.length;i++)
+        {
+            hash[array[i]] = 1;
+        }
+        
+        
+        for(int i=1;i<=n;i++)
+        {
+            if(hash[i]==0)
+            {
+                return i;
+            }
+        }
+        
+        return 1;
+    }
+}
+
+
+Optimal Approach:- Use the fact that the sum of first n natural numbers is (n*(n+1))/2, then we have find the missing number between 1 -> n.
+What we do is that we go through the array and then sum all the numbers. After that, we will substarct that sum from the sum of our first n natural numbers, 
+that will give us the missing number.
+
+T.C. -> O(n)
+S.C. -> O(1)
+
+Code:-
+class Solution {
+    int missingNumber(int array[], int n) {
+    
+        int shouldBeSum = (n *(n+1))/2;
+        int isSum = 0;
+        
+        
+        for(int i=0;i<array.length;i++)
+        {
+            isSum += array[i];
+        }
+        
+        return shouldBeSum - isSum;
+    }
+}
