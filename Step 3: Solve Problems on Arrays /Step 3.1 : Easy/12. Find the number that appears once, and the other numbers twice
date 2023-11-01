@@ -1,0 +1,106 @@
+Problem Link:-
+https://practice.geeksforgeeks.org/problems/element-appearing-once2552/1
+
+
+Brute Force Appraoch:-
+Traverse each array element and check if it appears once or twice. If it occurs once, return that element.
+
+T.C -> O(N^2)
+S.C.-> O(1)
+
+
+Better Approach:-
+Use a hasharray with size == max(arr)+1. Then traverse the array and increase the counter of array element by 1 in the 
+hashArray on the corresponding indexes.
+After that, traverse the hashArray and the return the index having value == 1.
+
+T.C -> O(N) + O(max(arr[N]))
+S.C -> O(max(arr[N])
+
+Another better approach :-
+Use hashMap for it. Traverse the array and store the elements with their occurences in it.
+Traverse the hashMap. If val ==1 then it's key is the ans.
+
+T.C -> O(NlogM)+O(N/2+1) N-> size of array and M-> size of HM
+S.C -> O(N/2+1) -> for the map ds
+
+Code:-
+class Sol
+{
+    public static int search(int A[], int N)
+    {
+        // your code here
+        HashMap<Integer,Integer> hm = new HashMap<>();
+        
+        for(int i=0;i<N;i++)
+        {
+            hm.put(A[i],hm.getOrDefault(A[i],0)+1);
+        }
+        
+        int ans[]=new int[1];
+        
+        hm.forEach((k,v) -> {
+            if(v==1){
+                ans[0]=k;
+            }
+        });
+        
+        return ans[0];
+        
+    }
+}
+
+
+Optimal Approach-> Use XOR 
+ex-> a^a = 0
+a ^ 0 = a [ we will use these two lines]
+
+Do the XOR of the whole array, all the numbers occuring twice will cancel themselves out in XOR but the number occuring once will not be able to
+and it will be in theresult of XOR of the whole array.
+
+T.C -> O(N)
+S.C. -> O(1)
+
+Code ->
+class Sol
+{
+    public static int search(int A[], int N)
+    {
+        // your code here
+        int XOR = 0;
+        
+        for(int i=0;i<A.length;i++)
+        {
+            XOR = XOR ^ A[i];
+        }
+        
+        return XOR;
+    }
+}
+
+
+
+Another optimal appraoch:- Simply traverse each unique element and check if if it has another occurence or not. If yes, go ahead 
+if not it is the ans.
+
+cODE -> class Sol
+{
+    public static int search(int A[], int N)
+    {
+        // your code here
+        for(int i=0;i<N-1;i = i+2)
+        {
+            if(A[i]!=A[i+1])
+            {
+                return A[i];
+            }
+        }
+        
+        
+        // If end is reached, then last element has one occurence.
+        return A[N-1];
+    }
+}
+
+T.C -> O(N/2)
+S.C. -> O(1)
